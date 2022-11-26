@@ -5,7 +5,8 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.BeforeEach;
 
@@ -19,7 +20,7 @@ import static java.util.stream.Collectors.toList;
  *
  *
  */
-public final class TestMusicGroup {
+final class TestMusicGroup {
 
     private static final String UNTITLED = "untitled";
     private static final String III = "III";
@@ -31,7 +32,7 @@ public final class TestMusicGroup {
      * Sets up the testing.
      */
     @BeforeEach
-    public void setUp() {
+    void setUp() {
         lz = new MusicGroupImpl();
         lz.addAlbum(I, 1969);
         lz.addAlbum(II, 1969);
@@ -52,7 +53,7 @@ public final class TestMusicGroup {
      * Tests album names.
      */
     @Test
-    public void testAlbumNames() {
+    void testAlbumNames() {
         final List<String> result = new ArrayList<>();
         result.add(II);
         result.add(UNTITLED);
@@ -66,7 +67,7 @@ public final class TestMusicGroup {
      * Tests ordering of song names.
      */
     @Test
-    public void testOrderedSongNames() {
+    void testOrderedSongNames() {
         final List<String> result = Arrays.asList(new String[] {
                 "Black Dog",
                 "Dazed and Confused",
@@ -85,7 +86,7 @@ public final class TestMusicGroup {
      * Tests albums in year.
      */
     @Test
-    public void testAlbumInYear() {
+    void testAlbumInYear() {
         final List<String> result = Arrays.asList(new String[] { II, I });
         final List<String> actual = lz.albumInYear(1969).collect(toList());
         assertEquals(result, actual);
@@ -95,7 +96,7 @@ public final class TestMusicGroup {
      * Tests song counting.
      */
     @Test
-    public void testCountSongs() {
+    void testCountSongs() {
         assertEquals(2, lz.countSongs(I));
     }
 
@@ -103,7 +104,7 @@ public final class TestMusicGroup {
      * Tests ordering song not in albums.
      */
     @Test
-    public void testCountSongsInNoAlbum() {
+    void testCountSongsInNoAlbum() {
         assertEquals(1, lz.countSongsInNoAlbum());
     }
 
@@ -111,7 +112,7 @@ public final class TestMusicGroup {
      * Tests average duration.
      */
     @Test
-    public void testAverageDuration() {
+    void testAverageDuration() {
         assertEquals(6.0, lz.averageDurationOfSongs(UNTITLED).getAsDouble(), 0.0);
     }
 
@@ -119,7 +120,7 @@ public final class TestMusicGroup {
      * Tests selecting the longest song.
      */
     @Test
-    public void testLongest() {
+    void testLongest() {
         assertEquals("When the Levee Breaks", lz.longestSong().get());
         assertEquals(UNTITLED, lz.longestAlbum().get());
     }
