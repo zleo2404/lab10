@@ -1,6 +1,7 @@
 package it.unibo.oop.lab.lambda;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
@@ -14,15 +15,15 @@ import java.util.Set;
  * The above comment shuts down checkstyle: in a test suite, magic numbers may be tolerated.
  */
 /**
- * Simple test for {@link it.unibo.oop.lab.lambda.ex01.LambdaUtilities}.
+ * Simple test for {@link it.unibo.oop.lab.lambda.LambdaUtilities}.
  */
-public final class TestLambdaUtilities {
+final class TestLambdaUtilities {
 
     /**
      * Test dup method.
      */
     @Test
-    public void testDup() {
+    void testDup() {
         assertEquals(
             List.of(1, 101, 2, 102, 3, 103, 4, 104, 5, 105),
             LambdaUtilities.dup(List.of(1, 2, 3, 4, 5), x -> x + 100) 
@@ -37,7 +38,7 @@ public final class TestLambdaUtilities {
      * Test optFilter method.
      */
     @Test
-    public void testOptFilter() {
+    void testOptFilter() {
         assertEquals(
             List.of(Optional.empty(), Optional.of(2), Optional.empty(), Optional.of(4), Optional.empty(), Optional.of(6)),
             LambdaUtilities.optFilter(List.of(1, 2, 3, 4, 5, 6), x -> x % 2 == 0)
@@ -52,7 +53,7 @@ public final class TestLambdaUtilities {
      * Test group method.
      */
     @Test
-    public void testGroup() {
+    void testGroup() {
         assertEquals(
             Map.of(
                 "even", Set.of(2, 4),
@@ -74,7 +75,7 @@ public final class TestLambdaUtilities {
      * Test fill method.
      */
     @Test
-    public void testFill() {
+    void testFill() {
         final var random = new Random();
         final var map = LambdaUtilities.fill(
             Map.of(

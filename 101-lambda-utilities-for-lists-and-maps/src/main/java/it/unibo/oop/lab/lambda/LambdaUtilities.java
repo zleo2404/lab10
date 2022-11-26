@@ -121,6 +121,7 @@ public final class LambdaUtilities {
      * @param args
      *            ignored
      */
+    @SuppressWarnings("PMD.SystemPrintln")
     public static void main(final String[] args) {
         final List<Integer> li = IntStream.range(1, 8).mapToObj(i -> Integer.valueOf(i)).collect(Collectors.toList());
         System.out.println(dup(li, x -> x + 100));
