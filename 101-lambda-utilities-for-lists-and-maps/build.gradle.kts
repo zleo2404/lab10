@@ -10,7 +10,6 @@ tasks.javadoc {
 
 repositories {
     mavenCentral()
-    jcenter()
 }
 
 dependencies {
