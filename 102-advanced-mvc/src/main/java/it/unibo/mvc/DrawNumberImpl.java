@@ -15,7 +15,9 @@ public final class DrawNumberImpl implements DrawNumber {
     private final Random random = new Random();
 
     /**
-     * @throws IllegalStateException if the configuration is not consistent
+     * @param min
+     * @param max
+     * @param attempts
      */
     public DrawNumberImpl(final int min, final int max, final int attempts) {
         this.min = min;
