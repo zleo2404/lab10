@@ -34,6 +34,7 @@ public final class DrawNumberApp implements DrawNumberViewObserver {
         int min = MIN;
         int max = MAX;
         int attempts = ATTEMPTS;
+        final Configuration.Builder builder = new Configuration.Builder();
         try (BufferedReader r = new BufferedReader(
             new InputStreamReader(
                 ClassLoader.getSystemResourceAsStream("config.yml"), "UTF-8"))) {
@@ -43,12 +44,15 @@ public final class DrawNumberApp implements DrawNumberViewObserver {
                         switch (diviso[0]) {
                             case "maximum":
                                 max = Integer.parseInt(diviso[1].trim());
+                                builder.setMax(max);
                                 break;
                             case "minimum":
                                 min = Integer.parseInt(diviso[1].trim());
+                                builder.setMin(min);
                                 break;
                             case "attempts":
                                 attempts = Integer.parseInt(diviso[1].trim());
+                                builder.setAttempts(attempts);
                                 break;
                             default:
                                 break;
@@ -58,7 +62,8 @@ public final class DrawNumberApp implements DrawNumberViewObserver {
                 } catch (IOException e) {
                     System.out.println(e.getMessage()); // NOPMD
                 }
-        this.model = new DrawNumberImpl(min, max, attempts);
+        final Configuration build = builder.build();
+        this.model = new DrawNumberImpl(build.getMin(), build.getMax(), build.getAttempts());
     }
 
     @Override
